@@ -14,13 +14,10 @@ It renders a simple HTML page, which can be customised via options.
 		<a href="https://nucleus.sh"><img src="https://nucleus.sh/logo_color.svg" height="64" /></a>
 	</td>
 	<td align="center">
-		<a href="https://eliopay.com"><img src="https://eliopay.com/logo_color.svg" height="64" /></a>
+		<a href="https://eliopay.com"><img src="https://eliopay.com/logo_black.svg" height="64" /></a>
 	</td>
 	<td align="center">
 		<a href="https://backery.io"><img src="https://backery.io/logo_color.svg" height="64" /></a>
-	</td>
-	<td align="center">
-		<a href="https://highdef.tv"><img src="https://highdef.tv/logo_color.svg" height="64" /></a>
 	</td>
 	<td align="center">
 		<a href="https://lttrfeed.com"><img src="https://lttrfeed.com/icon.svg" height="64" /></a>
@@ -30,7 +27,6 @@ It renders a simple HTML page, which can be customised via options.
 	<td align="center">Nucleus</td>
 	<td align="center">ElioPay</td>
 	<td align="center">Backery</td>
-	<td align="center">Highdef.tv</td>
 	<td align="center">Lttrfeed</td>
 </tr>
 </table>
