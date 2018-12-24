@@ -1,10 +1,14 @@
 {
-  "name": "express-mini-errors",
+  "name": "express-error-page",
   "version": "1.0.0",
   "description": "A simpler error handler / error page for Express 4",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincelwt/express-error-page.git"
   },
   "author": "vincelwt",
   "license": "MIT",
