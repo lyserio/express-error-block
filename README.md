@@ -1,8 +1,8 @@
 # express-error-page
 
-A minimalsit simple error handler for Express (4+) which returns an error page and can send you bug alerts via Telegram.
+A minimalsit simple error handler for Express (4+) which returns an error page.
 
-Support error reporting via `next()` and automatically handles 404.
+Support error reporting via `next()` and handling of 404.
 
 It renders a simple HTML page, which can be customised via options.
 
@@ -10,10 +10,28 @@ It renders a simple HTML page, which can be customised via options.
 
 <table>
 <tr>
-<td align="center"><a href="https://nucleus.sh/"><img src="https://nucleus.sh/logo_color.svg" height="64" /></a></td>
+	<td align="center">
+		<a href="https://nucleus.sh"><img src="https://nucleus.sh/logo_color.svg" height="64" /></a>
+	</td>
+	<td align="center">
+		<a href="https://eliopay.com"><img src="https://eliopay.com/logo_color.svg" height="64" /></a>
+	</td>
+	<td align="center">
+		<a href="https://backery.io"><img src="https://backery.io/logo_color.svg" height="64" /></a>
+	</td>
+	<td align="center">
+		<a href="https://highdef.tv"><img src="https://highdef.tv/logo_color.svg" height="64" /></a>
+	</td>
+	<td align="center">
+		<a href="https://lttrfeed.com"><img src="https://lttrfeed.com/icon.svg" height="64" /></a>
+	</td>
 </tr>
 <tr>
-<td align="center">Nucleus</td>
+	<td align="center">Nucleus</td>
+	<td align="center">ElioPay</td>
+	<td align="center">Backery</td>
+	<td align="center">Highdef.tv</td>
+	<td align="center">Lttrfeed</td>
 </tr>
 </table>
 
@@ -34,21 +52,19 @@ npm install express-error-page
 
 Add to the end of your app:
 ```
-const errorsHandler = require('express-error-page')
-
-app.use(errorsHandler({
+const errorsHandler = require('express-error-page')({
 	background: 'red', // Can be any valid CSS background property value
 	customCSS: 'body {color: #000}', 
-	telegramAlerts: false,
-	telegramToken: 'xxxxxx',
-	telegramConversation: 'xxxxx'
-}))
+})
+
+app.use(errorsHandler.handler)
+app.use(errorsHandler.notFound)
 ```
 
 
-## Telegram Alerts
+<!-- ## Telegram Alerts
 
 You can receive alerts via Telegram when an unhandled error happen in your app.
 
-Get a token as explained [here](https://www.siteguarding.com/en/how-to-get-telegram-bot-api-token) and get your user id as explained [here]()
-
+Get a token as explained [here](https://www.siteguarding.com/en/how-to-get-telegram-bot-api-token) and get your user chat id (`telegramChat`) by talking to [@get_id_bot](https://telegram.me/get_id_bot)
+ -->

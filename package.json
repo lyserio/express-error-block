@@ -1,6 +1,6 @@
 {
   "name": "express-error-page",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A simpler error handler / error page for Express 4",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,5 @@
   "author": "vincelwt",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
   }
 }

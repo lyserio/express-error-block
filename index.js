@@ -1,14 +1,10 @@
-const express = require('express')
-const router = express.Router()
-
-let background = '#2196F3'
-
-let TelegramBot = null
-let telegramBot = null
-let telegramAlerts = false
-let telegramToken = null
-let telegramConv = null
+// let TelegramBot = null
+// let telegramBot = null
+// let telegramAlerts = false
+// let telegramToken = null
+// let telegramChat = null
 let customCSS = ''
+let background = '#2196F3'
 
 const errorHTML = (title, message) => {
 	return `
@@ -40,8 +36,10 @@ const errorHTML = (title, message) => {
 }
 
 // Error handler
-router.use((err, req, res, next) => {
+const normalError = (err, req, res, next) => {
 	console.error(err)
+
+	let status = err.status || 500
 
 	if (!process.env.NODE_ENV) { // https://stackoverflow.com/questions/34227216/process-env-vs-app-getenv-on-getting-the-express-js-environment
 		var message = err
@@ -49,42 +47,44 @@ router.use((err, req, res, next) => {
 		var message = (typeof err === 'string' ? err : 'Internal server error')
 	}
 
-	if (telegramAlerts) {
-		telegramBot.sendMessage(telegramConversation, `Hi,\n\nAn error happened in your app.\n\n${message}`);
-	}
+	// if (telegramAlerts) {
+	// 	telegramBot.sendMessage(telegramChat, `Hi,\n\nAn error happened in your app.\n\n${err.toString()}`)
+	// }
 	
 	if (req.xhr || req.accepts('json', 'html') === 'json') {
-		res.status(500).json({ error: message })
+		res.status(status).json({ error: message })
 	} else {
-		res.status(500).send(errorHTML("Mmmh, something went wrong appened here.", message))
+		res.status(status).send(errorHTML("Something went wrong here.", message))
 	}
-})
+}
 
 // 404 Handler (last route)
-router.use((req, res, next) => {
+const notFound = (req, res, next) => {
+
 	if (req.xhr || req.accepts('json', 'html') === 'json') {
 		res.status(404).json({ error: 'not found' })
 	} else {
 		res.status(404).send(errorHTML("Looks like you got lost!", "404 - page not found"))
 	}
-})
+}
 
 module.exports = (options) => {
+
+	// if (options.telegramAlerts) {
+	// 	telegramAlerts = true
+	// 	telegramToken = options.telegramToken
+	// 	telegramChat = options.telegramChat
+		
+	// 	if (!TelegramBot) TelegramBot = require('node-telegram-bot-api')
 	
+	// 	telegramBot = new TelegramBot(telegramToken, { polling: false })
+	// }
+
 	if (options.background) background = options.background
 	if (options.customCSS) customCSS = options.customCSS
 
-	if (options.telegramAlerts) {
-		options.telegramAlerts = true
-	
-		if (!TelegramBot) TelegramBot = require('node-telegram-bot-api')
-	
-		telegramToken = options.telegramToken
-	
-		telegramBot = new TelegramBot(telegramToken, {polling: false})
-	
-		telegramConv = options.telegramConversation
+	return {
+		notFound: notFound,
+		handler: normalError
 	}
-
-	return router
 }
