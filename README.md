@@ -42,17 +42,22 @@ _👋 Want to be listed there? [Contact me](mailto:vince@lyser.io)._
 
 ## How to use
 
-```
+```bash
 npm install express-error-page
 ```
 
-Add to the end of your app:
-```
+Then require the module
+
+```javascript
 const errorsHandler = require('express-error-page')({
 	background: 'red', // Can be any valid CSS background property value
 	customCSS: 'body {color: #000}', 
 })
+```
 
+And add the handlers at the end of your app (just before `app.listen()`)
+
+```javascript
 app.use(errorsHandler.handler)
 app.use(errorsHandler.notFound)
 ```
