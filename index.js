@@ -10,6 +10,7 @@ const errorHTML = (title, message) => {
 	return `
 	<style>
 		body {
+			margin: 0;
 			background: ${background};
 			font-family: Lato, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 			display: flex;
