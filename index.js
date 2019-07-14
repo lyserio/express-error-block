@@ -18,6 +18,7 @@ const errorHTML = (title, message) => {
 			flex-direction: column;
 			text-align: center;
 			color: #fff;
+			height: 100%;
 		}
 
 		h1, h2 {
