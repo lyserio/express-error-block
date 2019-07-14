@@ -4,9 +4,11 @@
 // let telegramToken = null
 // let telegramChat = null
 let customCSS = ''
+let noImage = false
 let background = '#2196F3'
 
-const errorHTML = (title, message) => {
+const errorHTML = (title, message, img) => {
+	if (noImage) img = null
 	return `
 	<style>
 		body {
@@ -29,6 +31,7 @@ const errorHTML = (title, message) => {
 	</style>
 	<body>
 		<div>
+			${img ? `<img width=300 src='${img}'/>` : ''}
 			<h1>${title}</h1>
 			<br>
 			<h2>${message}</h2>
@@ -46,7 +49,7 @@ const normalError = (err, req, res, next) => {
 	if (!process.env.NODE_ENV) { // https://stackoverflow.com/questions/34227216/process-env-vs-app-getenv-on-getting-the-express-js-environment
 		var message = err
 	} else {
-		var message = (typeof err === 'string' ? err : 'Internal server error')
+		var message = (typeof err === 'string' ? err : 'An error happened on our side.')
 	}
 
 	// if (telegramAlerts) {
@@ -56,7 +59,7 @@ const normalError = (err, req, res, next) => {
 	if (req.xhr || req.accepts('json', 'html') === 'json') {
 		res.status(status).json({ error: message })
 	} else {
-		res.status(status).send(errorHTML("Something went wrong here.", message))
+		res.status(status).send(errorHTML("Something went wrong here.", message, "https://i.imgur.com/O0DCcQy.png"))
 	}
 }
 
@@ -66,7 +69,7 @@ const notFound = (req, res, next) => {
 	if (req.xhr || req.accepts('json', 'html') === 'json') {
 		res.status(404).json({ error: 'not found' })
 	} else {
-		res.status(404).send(errorHTML("Looks like you got lost!", "404 - page not found"))
+		res.status(404).send(errorHTML("Looks like you got lost.", "This page was not found", "https://i.imgur.com/A040Lxr.png"))
 	}
 }
 
@@ -84,6 +87,7 @@ module.exports = (options) => {
 
 	if (options.background) background = options.background
 	if (options.customCSS) customCSS = options.customCSS
+	if (options.noImage) noImage = options.noImage
 
 	return {
 		notFound: notFound,
