@@ -6,6 +6,13 @@ Support error reporting via `next()` and handling of 404.
 
 It renders a simple HTML page, which can be customised via options.
 
+## Features
+- [x] Customise the page CSS
+- [x] Respond in JSON if appropriate
+- [x] Show a cute illustration
+- [x] Hide error message in production
+- [ ] Telegram alerts on bugs
+
 ## Who uses it?
 
 <table>
@@ -22,23 +29,21 @@ It renders a simple HTML page, which can be customised via options.
 	<td align="center">
 		<a href="https://lttrfeed.com"><img src="https://lttrfeed.com/icon.svg" height="64" /></a>
 	</td>
+	<td align="center">
+		<a href="https://litch.app"><img src="https://litch.app/img/logo.png" height="64" /></a>
+	</td>
 </tr>
 <tr>
 	<td align="center">Nucleus</td>
 	<td align="center">ElioPay</td>
 	<td align="center">Backery</td>
 	<td align="center">Lttrfeed</td>
+	<td align="center">Litch.app</td>
 </tr>
 </table>
 
 _👋 Want to be listed there? [Contact me](mailto:vince@lyser.io)._
 
-
-## Features
-- Telegram alerts on bugs
-- Change the page background
-- Add custom CSS
-- Respond in JSON if API detected
 
 ## How to use
 
