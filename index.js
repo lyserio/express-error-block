@@ -69,7 +69,7 @@ const notFound = (req, res, next) => {
 	if (req.xhr || req.accepts('json', 'html') === 'json') {
 		res.status(404).json({ error: 'not found' })
 	} else {
-		res.status(404).send(errorHTML("Looks like you got lost.", "This page was not found", "https://i.imgur.com/A040Lxr.png"))
+		res.status(404).send(errorHTML("Looks like you got lost.", "This page was not found.", "https://i.imgur.com/A040Lxr.png"))
 	}
 }
 
