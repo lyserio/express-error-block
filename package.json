@@ -1,7 +1,7 @@
 {
-  "name": "express-error-page",
+  "name": "express-error-block",
   "version": "0.2.0",
-  "description": "A simple error handler and error page for Express 4.",
+  "description": "An error handler and error page for Express 4.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,4 +1,5 @@
-# express-error-page
+# express-error-block
+[![npm version](https://badge.fury.io/js/express-error-block.svg)](https://badge.fury.io/js/express-error-block)
 
 A minimalsit simple error handler for Express (4+) which returns an error page.
 
@@ -48,15 +49,16 @@ _👋 Want to be listed there? [Contact me](mailto:vince@lyser.io)._
 ## How to use
 
 ```bash
-npm install express-error-page
+npm install express-error-block
 ```
 
 Then require the module
 
 ```javascript
-const errorsHandler = require('express-error-page')({
+const errorsHandler = require('express-error-block')({
 	background: 'red', // Can be any valid CSS background property value
 	customCSS: 'body {color: #000}', 
+	noImage: false // Hide the default illustrations
 })
 ```
 
