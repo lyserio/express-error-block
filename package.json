@@ -1,6 +1,6 @@
 {
   "name": "express-error-block",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "An error handler and error page for Express 4.",
   "main": "index.js",
   "scripts": {
