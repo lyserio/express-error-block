@@ -43,7 +43,7 @@ const errorHTML = (title, message, img) => {
 // Error handler
 const normalError = (err, req, res, next) => {
 
-	let status = err.status || res.statusCode || 500
+	const status = err.status || (res.statusCode !== 200 ? res.statusCode : null) || 500
 	console.error(err, status)
 
 	if (!process.env.NODE_ENV) { // https://stackoverflow.com/questions/34227216/process-env-vs-app-getenv-on-getting-the-express-js-environment
