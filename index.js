@@ -7,6 +7,8 @@ let customCSS = ''
 let noImage = false
 let background = '#2196F3'
 
+const isAjax = req => req.xhr || req.accepts(['html', 'json']) === 'json'
+
 const errorHTML = (title, message, img) => {
 	if (noImage) img = null
 	return `
@@ -56,7 +58,7 @@ const normalError = (err, req, res, next) => {
 	// 	telegramBot.sendMessage(telegramChat, `Hi,\n\nAn error happened in your app.\n\n${err.toString()}`)
 	// }
 	
-	if (req.xhr || req.accepts('json', 'html') === 'json') {
+	if (isAjax(req)) {
 		res.status(status).json({ error: message })
 	} else {
 		res.status(status).send(errorHTML("Something went wrong here.", message, "https://i.imgur.com/O0DCcQy.png"))
@@ -66,10 +68,12 @@ const normalError = (err, req, res, next) => {
 // 404 Handler (last route)
 const notFound = (req, res, next) => {
 
-	if (req.xhr || req.accepts('json', 'html') === 'json') {
-		res.status(404).json({ error: 'not found' })
+	res.status(404)
+
+	if (isAjax(req)) {
+		res.json({ error: 'not found' })
 	} else {
-		res.status(404).send(errorHTML("Looks like you got lost.", "This page was not found.", "https://i.imgur.com/A040Lxr.png"))
+		res.send(errorHTML("Looks like you got lost.", "This page was not found.", "https://i.imgur.com/A040Lxr.png"))
 	}
 }
 
